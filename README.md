@@ -21,6 +21,16 @@ This repository implements battle-tested patterns for database migrations in pro
 - ✅ **Production Monitoring** - Health checks and metrics for migration status
 - ✅ **Rollback Automation** - Rapid recovery under pressure
 
+## ⚠️ Security Warning
+
+**IMPORTANT**: This repository contains example credentials for local development only.
+
+- 🚨 **DO NOT use default passwords (`postgres/postgres`) in production**
+- 🔒 **Change all credentials before deploying to production**
+- 📖 **Read [SECURITY.md](SECURITY.md) for production security guidelines**
+
+The Docker Compose and example configurations use default passwords **for demonstration purposes only**. Always use strong, unique passwords and proper secrets management in production environments.
+
 ## 🏗️ Architecture
 
 ### Migration Strategies
