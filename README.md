@@ -6,36 +6,37 @@
 
 Production-ready framework for executing zero-downtime database migrations using blue-green deployments, bidirectional synchronization, and automated rollback procedures.
 
-**📖 Full Tutorial:** [Zero-Downtime Database Migrations - Enterprise Patterns](https://crashbytes.com/articles/tutorial-zero-downtime-database-migrations-enterprise-patterns-2025/)
+**Full Tutorial:** [Zero-Downtime Database Migrations - Enterprise Patterns](https://crashbytes.com/articles/tutorial-zero-downtime-database-migrations-enterprise-patterns-2025/)
 
-## 🎯 Overview
+## Overview
 
 This repository implements battle-tested patterns for database migrations in production systems processing billions of transactions daily. Used in Fortune 500 financial services and e-commerce platforms.
 
 ### Key Features
 
-- ✅ **Versioned Schema Management** - Track and apply migrations with automatic version control
-- ✅ **Blue-Green Deployments** - Zero-downtime cutover with automated rollback
-- ✅ **Bidirectional Sync** - Keep databases consistent during migration
-- ✅ **Automated Testing** - Comprehensive test suite for migration validation
-- ✅ **Production Monitoring** - Health checks and metrics for migration status
-- ✅ **Rollback Automation** - Rapid recovery under pressure
+* Versioned Schema Management - Track and apply migrations with automatic version control
+* Blue-Green Deployments - Zero-downtime cutover with automated rollback
+* Bidirectional Sync - Keep databases consistent during migration
+* Automated Testing - Comprehensive test suite for migration validation
+* Production Monitoring - Health checks and metrics for migration status
+* Rollback Automation - Rapid recovery under pressure
 
-## ⚠️ Security Warning
+## Security Warning
 
 **IMPORTANT**: This repository contains example credentials for local development only.
 
-- 🚨 **DO NOT use default passwords (`postgres/postgres`) in production**
-- 🔒 **Change all credentials before deploying to production**
-- 📖 **Read [SECURITY.md](SECURITY.md) for production security guidelines**
+* DO NOT use default passwords (`postgres/postgres`) in production
+* Change all credentials before deploying to production
+* Read [SECURITY.md](SECURITY.md) for production security guidelines
 
 The Docker Compose and example configurations use default passwords **for demonstration purposes only**. Always use strong, unique passwords and proper secrets management in production environments.
 
-## 🏗️ Architecture
+## Architecture
 
 ### Migration Strategies
 
 #### 1. Expand-Contract Pattern
+
 ```
 Phase 1: Expand (Add new schema)
 ├── Add new columns/tables
@@ -51,6 +52,7 @@ Phase 2: Contract (Remove old schema)
 ```
 
 #### 2. Blue-Green Migration
+
 ```
 Preparation:
 ├── Set up green database (new schema)
@@ -66,13 +68,13 @@ Execution:
 └── Decommission blue
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
-- Python 3.9+
-- PostgreSQL 13+ (or compatible database)
-- Docker & Docker Compose (for local testing)
+* Python 3.9+
+* PostgreSQL 13+ (or compatible database)
+* Docker & Docker Compose (for local testing)
 
 ### Installation
 
@@ -102,7 +104,7 @@ sleep 10
 python examples/full_migration_demo.py
 ```
 
-## 📚 Usage Examples
+## Usage Examples
 
 ### Basic Schema Migration
 
@@ -190,7 +192,7 @@ async def sync_databases():
 asyncio.run(sync_databases())
 ```
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 crashbytes-tutorial-zero-downtime-db-migrations/
@@ -222,7 +224,7 @@ crashbytes-tutorial-zero-downtime-db-migrations/
 └── README.md                          # This file
 ```
 
-## 🧪 Testing
+## Testing
 
 Run the test suite:
 
@@ -237,29 +239,32 @@ pytest --cov=migrations --cov=deployment --cov=sync tests/
 pytest tests/test_migration.py::TestMigration::test_schema_migration_applies_cleanly
 ```
 
-## 📋 Migration Execution Checklist
+## Migration Execution Checklist
 
 ### Pre-Migration
-- [ ] Backup both databases
-- [ ] Test migration in staging
-- [ ] Verify rollback procedures
-- [ ] Prepare monitoring dashboards
-- [ ] Brief stakeholders
+
+* Backup both databases
+* Test migration in staging
+* Verify rollback procedures
+* Prepare monitoring dashboards
+* Brief stakeholders
 
 ### During Migration
-- [ ] Start replication
-- [ ] Verify data consistency
-- [ ] Execute cutover
-- [ ] Monitor application health
-- [ ] Verify green database performance
+
+* Start replication
+* Verify data consistency
+* Execute cutover
+* Monitor application health
+* Verify green database performance
 
 ### Post-Migration
-- [ ] Stop replication
-- [ ] Archive blue database
-- [ ] Document lessons learned
-- [ ] Update runbooks
 
-## 🔧 Configuration
+* Stop replication
+* Archive blue database
+* Document lessons learned
+* Update runbooks
+
+## Configuration
 
 Copy the example configuration:
 
@@ -295,28 +300,30 @@ monitoring:
   prometheus_port: 9090
 ```
 
-## 📊 Monitoring
+## Monitoring
 
 The framework includes built-in monitoring:
 
-- **Replication Lag** - Track sync delay between databases
-- **Migration Progress** - Monitor migration execution
-- **Data Consistency** - Verify data integrity
-- **Performance Metrics** - Database throughput and latency
+* **Replication Lag** - Track sync delay between databases
+* **Migration Progress** - Monitor migration execution
+* **Data Consistency** - Verify data integrity
+* **Performance Metrics** - Database throughput and latency
 
 Access monitoring dashboard at `http://localhost:8080/metrics` when running.
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
 **High replication lag:**
+
 ```bash
 # Check replication status
 python -c "from deployment.blue_green_migration import BlueGreenMigration; import asyncio; m = BlueGreenMigration('blue', 'green'); asyncio.run(m.verify_replication_lag())"
 ```
 
 **Data inconsistency:**
+
 ```bash
 # Run consistency check
 python examples/verify_consistency.py
@@ -324,26 +331,26 @@ python examples/verify_consistency.py
 
 See [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) for detailed solutions.
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details.
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🔗 Related Resources
+## Related Resources
 
-- [Tutorial: GitOps with ArgoCD on Kubernetes](https://crashbytes.com/articles/tutorial-gitops-argocd-kubernetes-enterprise-deployment-2025/)
-- [Tutorial: Internal Developer Platform with Backstage](https://crashbytes.com/articles/tutorial-internal-developer-platform-backstage-kubernetes-production-2025/)
-- [Tutorial: MLOps Pipeline on Kubernetes](https://crashbytes.com/articles/tutorial-mlops-pipeline-kubernetes-production-deployment-2025/)
+* [Tutorial: GitOps with ArgoCD on Kubernetes](https://crashbytes.com/articles/tutorial-gitops-argocd-kubernetes-enterprise-deployment-2025/)
+* [Tutorial: Internal Developer Platform with Backstage](https://crashbytes.com/articles/tutorial-internal-developer-platform-backstage-kubernetes-production-2025/)
+* [Tutorial: MLOps Pipeline on Kubernetes](https://crashbytes.com/articles/tutorial-mlops-pipeline-kubernetes-production-deployment-2025/)
 
-## 📞 Support
+## Support
 
-- **Blog:** [crashbytes.com](https://crashbytes.com)
-- **Issues:** [GitHub Issues](https://github.com/crashbytes/crashbytes-tutorial-zero-downtime-db-migrations/issues)
-- **Tutorial:** [Full Article](https://crashbytes.com/articles/tutorial-zero-downtime-database-migrations-enterprise-patterns-2025/)
+* **Blog:** [crashbytes.com](https://crashbytes.com)
+* **Issues:** [GitHub Issues](https://github.com/crashbytes/crashbytes-tutorial-zero-downtime-db-migrations/issues)
+* **Tutorial:** [Full Article](https://crashbytes.com/articles/tutorial-zero-downtime-database-migrations-enterprise-patterns-2025/)
 
 ---
 
-Built with ❤️ by [CrashBytes](https://crashbytes.com) - Empowering developers with production-ready patterns.
+Built by [CrashBytes](https://crashbytes.com) - Empowering developers with production-ready patterns.
